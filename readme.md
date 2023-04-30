@@ -2,11 +2,11 @@
 
 AltMVC is a simple PHP framework that follows the Model-View-Controller (MVC) pattern. This framework allows developers to easily create web applications by providing a set of core features such as routing, database integration, and command line utilities. This document provides a brief overview of the AltMVC framework and how to use it.
 
-Getting Started
+## Getting Started
 
 To use AltMVC, you will need to have PHP installed on your machine. Once you have PHP installed, you can download the AltMVC framework and extract it to a directory on your local machine.
 
-Overview
+## Overview
 
 The core of the AltMVC framework is divided into three parts:
 
@@ -16,7 +16,7 @@ The core of the AltMVC framework is divided into three parts:
 
 In addition, AltMVC also provides a set of utilities that help developers manage the database and perform common tasks from the command line.
 
-Directory Structure
+## Directory Structure
 
 The following is the directory structure of AltMVC:
 
@@ -24,7 +24,7 @@ The following is the directory structure of AltMVC:
 - src/commands: This directory contains the command line utilities.
 - public: This directory contains the public files that can be accessed by the users.
 
-Command Line Utilities
+## Command Line Utilities
 
 The AltMVC framework provides a set of command line utilities to help developers perform common tasks such as serving the application, migrating the database, and seeding the database. These utilities can be found in the `src/commands` directory. The following is a list of available commands:
 
