@@ -6,6 +6,12 @@ AltMVC is a simple PHP framework that follows the Model-View-Controller (MVC) pa
 
 To use AltMVC, you will need to have PHP installed on your machine. Once you have PHP installed, you can download the AltMVC framework and extract it to a directory on your local machine.
 
+```bash
+git clone https://github.com/KevinNVM/altmvc.git altmvc-project
+cd altmvc-project
+php alt serve
+```
+
 ## Overview
 
 The core of the AltMVC framework is divided into three parts:
