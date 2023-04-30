@@ -1,0 +1,18 @@
+{
+  "name": "kevinalt/altmvc",
+  "description": "Lightweight and Simple MVC Framework With No Third Party Dependencies Built With Vanilla PHP",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Kevinalt\\Altmvc\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "KevinNVM",
+      "email": "kevindarmawan022@gmail.com"
+    }
+  ],
+  "require": {}
+}

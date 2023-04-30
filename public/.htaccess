@@ -1,0 +1,7 @@
+# .htaccess
+Options -Indexes
+
+<Files "cli">
+  Order Deny,Allow
+  Deny from All
+</Files>
