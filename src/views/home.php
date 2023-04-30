@@ -11,11 +11,11 @@
   </p>
   <hr>
   <p class="mb-0">
-    Visit documentation: <a target="_blank" href="https://kevinnvm.github.io/">https://kevinnvm.github.io/</a>  
+    Visit documentation : <a target="_blank" href="https://kevinnvm.github.io/">https://kevinnvm.github.io/</a>  
 </p>
 <ul>
-  <li>PHP Version: <?= $php_version ?></li>
-  <li>AltMVC Version: <?= $framework_version ?></li>
+  <li>PHP Version : <?= $php_version ?></li>
+  <li>AltMVC Version : <?= $framework_version ?></li>
 </ul>
 </div>
 
