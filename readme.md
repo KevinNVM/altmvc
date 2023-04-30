@@ -28,9 +28,9 @@ The following is the directory structure of AltMVC:
 
 The AltMVC framework provides a set of command line utilities to help developers perform common tasks such as serving the application, migrating the database, and seeding the database. These utilities can be found in the `src/commands` directory. The following is a list of available commands:
 
-- php alt serve: Starts the application on the default port of 8000.
-- php alt db:migrate: Migrates the database schema.
-- php alt db:rollback: Clears the database.
-- php alt db:seed: Seeds the database with sample data.
+- `php alt serve`: Starts the application on the default port of 8000.
+- `php alt db:migrate`: Migrates the database schema.
+- `php alt db:rollback`: Clears the database.
+- `php alt db:seed`: Seeds the database with sample data.
 
 To use these commands, open a terminal or command prompt and navigate to the root directory of your AltMVC application. Then, run the desired command by typing it in the terminal or command prompt.
