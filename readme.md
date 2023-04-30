@@ -20,37 +20,18 @@ In addition, AltMVC also provides a set of utilities that help developers manage
 
 The following is the directory structure of AltMVC:
 
-*   public/ : This folder contains all the files that are publicly accessible to the user via the webserver.
-    *   .htaccess: This file is used to configure Apache web server settings for the application.
-    *   index.php: This file is the entry point for the application and is responsible for handling all incoming HTTP requests.
-*   src/ : This folder contains all the source code files for the application.
-    *   commands/: This folder contains PHP files that define CLI commands for the application.
-        *   db.php: This file contains the database-related CLI commands for the application.
-    *   controllers/: This folder contains PHP files that define controllers for the application.
-        *   controller.php: This file contains the base controller class for the application.
-        *   home.php: This file contains the controller for the home page.
-    *   core/: This folder contains core PHP files for the application.
-        *   autoload.php: This file is responsible for automatically loading PHP classes as they are needed.
-        *   env.php: This file is responsible for setting up the environment variables for the application.
-        *   functions.php: This file contains various utility functions that are used throughout the application.
-        *   variables.php: This file contains various global variables that are used throughout the application.
-    *   database/: This folder contains PHP files that define the database-related functionality for the application.
-        *   conn.php: This file contains the database connection details for the application.
-        *   db.php: This file contains functions for executing SQL queries and interacting with the database.
-    *   errors/: This folder contains PHP files that define custom error pages for the application.
-    *   views/: This folder contains PHP files that define the HTML templates for the application.
-        *   partials/: This folder contains reusable template components that are included in other views.
-            *   footer.php: This file contains the HTML code for the footer.
-            *   header.php: This file contains the HTML code for the header.
-            *   navbar.php: This file contains the HTML code for the navigation bar.
-        *   about.php: This file contains the HTML code for the about page.
-        *   home.php: This file contains the HTML code for the home page.
-    *   routes.php: This file defines the URL routes for the application.
-*   vendor/: This folder contains the third-party libraries and dependencies that the application relies on.
-*   .gitignore: This file specifies the files and folders that should be ignored by Git version control.
-*   alt: This file is the CLI entry point for the application and is responsible for handling all incoming CLI requests.
-*   composer.json: This file contains the project dependencies and metadata for the application.
-*   readme.md: This file contains the documentation for the application.
+*   `public/` : This folder contains all the files that are publicly accessible to the user via the webserver.
+    *   `.htaccess`: This file is used to configure Apache web server settings for the application.
+    *   `index.php`: This file is the entry point for the application and is responsible for handling all incoming HTTP requests.
+*   `src/` : This folder contains all the source code files for the application.
+    *   `commands/`: This folder contains PHP files that define CLI commands for the application.
+    *   `controllers/`: This folder contains PHP files that define controllers for the application.
+    *   `core/`: This folder contains core PHP files for the application.
+    *   `database/`: This folder contains PHP files that define the database-related functionality for the application.
+    *   `errors/`: This folder contains PHP files that define custom error pages for the application.
+    *   `views/`: This folder contains PHP files that define the HTML templates for the application.
+    *   `routes.php`: This file defines the URL routes for the application.
+*   `alt`: This file is the CLI entry point for the application and is responsible for handling all incoming CLI requests.
 
 ## Command Line Utilities
 
