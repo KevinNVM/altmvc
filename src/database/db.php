@@ -1,17 +1,24 @@
 <?php
 
-$conn = require 'conn.php';
+$dbCreds = require __DIR__ . '/conn.php';
 
-function query($query) {
-    global $conn;
-    return mysqli_query($conn, $query);
-} 
+function query($query)
+{
+    global $dbCreds;
+    $conn = mysqli_connect(...$dbCreds);
 
-function fetch($queryResult, $asObject = true) {
-    global $conn;
+    $result = mysqli_query($conn, $query);
+    if ($result === false) {
+        throw new Exception('Error executing query: ' . mysqli_error($conn));
+    }
+    return $result;
+}
+
+function fetch($queryResult, bool $asObject = true)
+{
     $results = [];
     if ($asObject) {
-        while($row = mysqli_fetch_object($queryResult)) {
+        while ($row = mysqli_fetch_object($queryResult)) {
             $results[] = $row;
         }
     } else {

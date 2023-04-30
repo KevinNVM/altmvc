@@ -30,7 +30,7 @@ $routes = [
  * Parsing URL Section. Make changes as you need.
  */
 
- 
+
 // Parse URL
 $path = rtrim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 if (empty($path)) $path = '/';
@@ -51,14 +51,10 @@ if (isset($routes[$path])) {
         $errorMessage = "Controller does not exist.";
         $statusCode = 500;
     }
-    
+
     if (isset($errorMessage)) {
         abort($statusCode, $errorMessage);
     }
-
 } else {
     abort(404, "Route `$path` is not found");
 }
-
-
-?>
