@@ -12,5 +12,12 @@ $router->get('/api', [HomeController::class, 'api']);
 
 $router->get('/users/{id}', [UserController::class, 'show']);
 
+$router->post('/post-test', [HomeController::class, 'post']);
+
+$router->put('/put-test', [HomeController::class, 'put']);
+$router->patch('/patch-test', [HomeController::class, 'patch']);
+$router->delete('/delete-test', [HomeController::class, 'delete']);
+
+
 // use router on running app
-$router->useRouter($_SERVER['REQUEST_URI']);
+$router->useRouter($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);

@@ -12,6 +12,6 @@ class UserController
 
     public function show($id)
     {
-        return Response::json("Showing user with id : $id");
+        send(200, "Showing user with id: $id");
     }
 }

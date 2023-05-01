@@ -3,6 +3,7 @@
 define('VIEWS_PATH', '../src/views/');
 
 define('HTTP_ERROR_MESSAGES',  array(
+    200 => 'Ok',
     400 => 'Bad Request',
     401 => 'Unauthorized',
     403 => 'Forbidden',

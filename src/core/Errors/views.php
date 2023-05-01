@@ -12,20 +12,20 @@
 <body>
     <div class="container mt-5">
         <div class="alert alert-danger">
-            <h1><?php echo $title; ?></h1>
-            <p class="fs-5"><?php echo $error_message; ?></p>
-            <p>File: <code><?php echo $file; ?></code></p>
-            <p>Line: <code><?php echo $line; ?></code></p>
+            <h1><?php echo $title ?? null; ?></h1>
+            <p class="fs-5"><?php echo $error_message ?? null; ?></p>
+            <p>File: <code><?php echo $file ?? null; ?></code></p>
+            <p>Line: <code><?php echo $line ?? null; ?></code></p>
             <?php if (!empty($trace)) : ?>
             <h2>Trace</h2>
             <ul>
                 <?php foreach ($trace as $item) : ?>
                 <li>
-                    <?php echo $item['file']; ?>:<?php echo $item['line']; ?>
+                    <?php echo $item['file'] ?? null; ?>:<?php echo $item['line'] ?? null; ?>
                     <?php if (isset($item['class'])) : ?>
-                    (<?php echo $item['class']; ?><?php echo $item['type']; ?><?php echo $item['function']; ?>)
+                    (<?php echo $item['class'] ?? null; ?><?php echo $item['type'] ?? null; ?><?php echo $item['function'] ?? null; ?>)
                     <?php else : ?>
-                    (<?php echo $item['function']; ?>)
+                    (<?php echo $item['function'] ?? null; ?>)
                     <?php endif; ?>
                 </li>
                 <?php endforeach; ?>

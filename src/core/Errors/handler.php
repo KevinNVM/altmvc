@@ -1,5 +1,13 @@
 <?php
 
+/*
+    This function handles errors
+    @param $errno int, error type
+    @param $errstr string, error message
+    @param $errfile string, file in which error occurred
+    @param $errline int, line number of error
+    @return void
+*/
 function handle_error($errno, $errstr, $errfile, $errline)
 {
     http_response_code(500);
@@ -12,6 +20,11 @@ function handle_error($errno, $errstr, $errfile, $errline)
     exit;
 }
 
+/**
+ * This function handles exceptions
+    @param $exception Exception object, the exception object that was thrown
+    @return void
+ */
 function handle_exception($exception)
 {
     http_response_code(500);
@@ -26,11 +39,13 @@ function handle_exception($exception)
 
 
 
+// Register error handler
 set_error_handler(function ($code, $message, $file, $line) {
     ob_clean(); // Clear the output buffer
     handle_error($code, $message, $file, $line);
 });
 
+// Register exception handler
 set_exception_handler(function ($exception) {
     ob_clean(); // Clear the output buffer
     handle_exception($exception);
