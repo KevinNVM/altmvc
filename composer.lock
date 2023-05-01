@@ -1,0 +1,81 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "65356b9bcd2b7f3b885adb5b158db7a1",
+    "packages": [],
+    "packages-dev": [
+        {
+            "name": "php-sage/sage",
+            "version": "v1.3.24",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-sage/sage.git",
+                "reference": "b76450b5d6c214a5b98435ad8ea134bf3fbbfe4a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-sage/sage/zipball/b76450b5d6c214a5b98435ad8ea134bf3fbbfe4a",
+                "reference": "b76450b5d6c214a5b98435ad8ea134bf3fbbfe4a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.1.0"
+            },
+            "require-dev": {
+                "pestphp/pest": "^1.21",
+                "seld/phar-utils": "^1.2",
+                "spatie/pest-plugin-snapshots": "^1.1",
+                "symfony/finder": "^3.0 || ^4.0 || ^5.0",
+                "symfony/var-dumper": "^6.1"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Sage.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rokas Šleinius",
+                    "homepage": "https://github.com/raveren"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/php-sage/sage/contributors"
+                }
+            ],
+            "description": "☯ Insightful PHP debugging assistant.",
+            "homepage": "https://github.com/php-sage/sage",
+            "keywords": [
+                "debug",
+                "debug_backtrace",
+                "dump",
+                "dumper",
+                "json_decode",
+                "php",
+                "sage",
+                "var_dump"
+            ],
+            "support": {
+                "issues": "https://github.com/php-sage/sage/issues",
+                "source": "https://github.com/php-sage/sage/tree/v1.3.24"
+            },
+            "time": "2023-04-24T18:25:03+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}

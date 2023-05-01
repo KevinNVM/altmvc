@@ -1,0 +1,37 @@
+#!/usr/bin/env php
+<?php
+
+// Check the CLI environment
+if (php_sapi_name() !== 'cli') {
+    die("Direct script access is not allowed.");
+}
+// Define the options
+$options = [
+    'serve' => 'Serve the app',
+];
+
+// Get the user's choice from the command line arguments
+if (isset($argv[1]) && array_key_exists($argv[1], $options)) {
+    $choice = $argv[1];
+} else {
+    // Display the options if no argument is provided or if it's invalid
+    echo "Please choose an option:\n";
+    foreach ($options as $key => $value) {
+        echo "  [$key] $value\n";
+    }
+    // Get the user's choice
+    $choice = readline("> ");
+}
+
+// Perform the selected action
+switch (strtolower($choice)) {
+    case 'serve':
+        $port = 8000;
+        $host = 'localhost';
+        echo "Starting the app on http://$host:$port\n";
+        exec("php -S $host:$port -t public ");
+        break;
+    default:
+        echo "Invalid option. Please choose again.\n";
+        break;
+}
