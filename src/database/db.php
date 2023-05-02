@@ -11,21 +11,21 @@ function query($query)
     if ($result === false) {
         throw new Exception('Error executing query: ' . mysqli_error($conn));
     }
+
+    mysqli_close($conn);
     return $result;
 }
 
-function fetch($queryResult, bool $asObject = true)
+function fetch($queryResult)
 {
     $results = [];
-    if ($asObject) {
-        while ($row = mysqli_fetch_object($queryResult)) {
-            $results[] = $row;
-        }
-    } else {
-        while ($row = mysqli_fetch_assoc($queryResult)) {
-            $results[] = $row;
-        }
+    while ($row = mysqli_fetch_object($queryResult)) {
+        $results[] = $row;
     }
-
     return $results;
+}
+
+function fetchOne($queryResult)
+{
+    return mysqli_fetch_object($queryResult);
 }
