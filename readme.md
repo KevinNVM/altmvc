@@ -1,5 +1,7 @@
 # AltMVC Framework Documentation
 
+> Some of the functions may change or removed on V2, See changelogs for details.
+
 AltMVC is a simple PHP framework that follows the Model-View-Controller (MVC) pattern. This framework allows developers to easily create web applications by providing a set of core features such as routing, database integration, and command line utilities. This document provides a brief overview of the AltMVC framework and how to use it.
 
 ## Getting Started

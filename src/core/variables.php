@@ -1,6 +1,5 @@
 <?php
 
-// applications variables
 define('VIEWS_PATH', '../src/views/');
 
 define('HTTP_ERROR_MESSAGES',  array(
