@@ -43,19 +43,25 @@ class Router
 
         // Check if route exists in routes array for the requested method
         foreach ($this->routes[$method] as $pattern => $handler) {
-            // Replace {parameter} with regular expression for capturing parameter value
-            $pattern = str_replace('{id}', '(\d+)', $pattern);
+            // Get parameter name from pattern
+            preg_match_all('/{([^}]+)}/', $pattern, $matches);
+            if (!empty($matches[1])) {
+                $paramName = $matches[1][0];
+
+                // Replace parameter with regular expression for capturing parameter value
+                $pattern = str_replace('{' . $paramName . '}', '(.+)', $pattern);
+            }
 
             if (preg_match('#^' . $pattern . '$#', $route, $matches)) {
                 if (is_callable($handler)) {
-                    // If handler is a closure, call it with $matches as parameter
-                    $handler(...$matches);
+                    // If handler is a closure, call it with parameter value as argument
+                    $handler($matches[1]);
                 } else {
-                    // If handler is an array containing controller class and method, call the method with $matches as parameter
+                    // If handler is an array containing controller class and method, call the method with parameter value as argument
                     $controller = $handler[0];
                     $method = $handler[1];
                     $controllerObj = new $controller();
-                    $controllerObj->$method(...$matches);
+                    $controllerObj->$method($matches[1]);
                 }
                 return;
             }
@@ -64,6 +70,8 @@ class Router
         // handle 404
         abort(404, "Route `$method $path` Not Found");
     }
+
+
 
     public function getRoutes()
     {

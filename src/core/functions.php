@@ -16,27 +16,6 @@ if (!function_exists('dd') && !function_exists('dump')) {
     }
 }
 
-if (!function_exists('send')) {
-    function send(int $http_code = 200, string $message = '')
-    {
-        $env = $_ENV['ENVIRONMENT'];
-        $error_messages = HTTP_ERROR_MESSAGES;
-
-        if (isset($error_messages[$http_code])) {
-            $default_message = $error_messages[$http_code];
-        } else {
-            $default_message = $error_messages[500];
-        }
-
-
-        $display_message = ($message !== '') ? $message : $default_message;
-
-        echo $display_message;
-
-        die;
-    }
-}
-
 
 if (!function_exists('abort')) {
     function abort(int $http_code, string $message = '')

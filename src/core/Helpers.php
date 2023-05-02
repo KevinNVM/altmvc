@@ -34,7 +34,7 @@ if (!function_exists('send')) {
             // If in development or other non-production environment, display the error message
 
             header("HTTP/1.1 $http_code $default_message");
-            throw new Exception($display_message +  $http_code);
+            throw new Exception($display_message . "  $http_code {$error_messages[$http_code]}");
         } else {
             // If in production environment, send the error message and appropriate HTTP code
             header("HTTP/1.1 $http_code $default_message");
