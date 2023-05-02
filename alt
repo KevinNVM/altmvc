@@ -1,20 +1,13 @@
+#!/usr/bin/env php
 <?php
 
 // Check the CLI environment
 if (php_sapi_name() !== 'cli') {
-    header('HTTP/1.0 403 Forbidden');
-    die("Forbidden");
+    die("Direct script access is not allowed.");
 }
-
-require_once __DIR__ . '/src/core/env.php';
-require __DIR__ . '/src/commands/db.php';
-
 // Define the options
 $options = [
     'serve' => 'Serve the app',
-    'db:migrate' => 'Migrate the database',
-    'db:rollback' => 'Clear the database',
-    'db:seed' => 'Seed the database',
 ];
 
 // Get the user's choice from the command line arguments
@@ -31,24 +24,25 @@ if (isset($argv[1]) && array_key_exists($argv[1], $options)) {
 }
 
 // Perform the selected action
-switch ($choice) {
+switch (strtolower($choice)) {
     case 'serve':
         $port = 8000;
         $host = 'localhost';
         echo "Starting the app on http://$host:$port\n";
         exec("php -S $host:$port -t public ");
         break;
-    case 'db:migrate':
-        echo "Migrating the database...\n";
-        migrate();
+    default:
+        echo "Invalid option. Please choose again.\n";
         break;
-    case 'db:rollback':
-        echo "Clearing the database...\n";
-        clear();
-        break;
-    case 'db:seed':
-        echo "Seeding the database...\n";
-        seed();
+}
+
+// Perform the selected action
+switch (strtolower($choice)) {
+    case 'serve':
+        $port = 8000;
+        $host = 'localhost';
+        echo "Starting the app on http://$host:$port\n";
+        exec("php -S $host:$port -t public ");
         break;
     default:
         echo "Invalid option. Please choose again.\n";
