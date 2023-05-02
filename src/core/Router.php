@@ -43,25 +43,43 @@ class Router
 
         // Check if route exists in routes array for the requested method
         foreach ($this->routes[$method] as $pattern => $handler) {
-            // Get parameter name from pattern
-            preg_match_all('/{([^}]+)}/', $pattern, $matches);
-            if (!empty($matches[1])) {
-                $paramName = $matches[1][0];
+            // Test if route matches pattern
+            $regex = str_replace('/', '\/', $pattern);
+            $regex = preg_replace('/\{[a-zA-Z]+\}/', '([a-zA-Z0-9_]+)', $regex);
+            $regex = '/^' . $regex . '$/';
+            if (preg_match($regex, $route, $matches)) {
+                // Remove first element of $matches array, which contains the entire match
+                array_shift($matches);
 
-                // Replace parameter with regular expression for capturing parameter value
-                $pattern = str_replace('{' . $paramName . '}', '(.+)', $pattern);
-            }
+                // Determine number of parameters in the route
+                $numParams = substr_count($pattern, '{');
 
-            if (preg_match('#^' . $pattern . '$#', $route, $matches)) {
+                // Call handler with parameter values as arguments
                 if (is_callable($handler)) {
-                    // If handler is a closure, call it with parameter value as argument
-                    $handler($matches[1]);
+                    switch ($numParams) {
+                        case 1:
+                            $handler($matches[0]);
+                            break;
+                        case 2:
+                            $handler($matches[0], $matches[1]);
+                            break;
+                        default:
+                            abort(500, "Invalid number of parameters in route: $pattern");
+                    }
                 } else {
-                    // If handler is an array containing controller class and method, call the method with parameter value as argument
                     $controller = $handler[0];
                     $method = $handler[1];
                     $controllerObj = new $controller();
-                    $controllerObj->$method($matches[1]);
+                    switch ($numParams) {
+                        case 1:
+                            $controllerObj->$method($matches[0]);
+                            break;
+                        case 2:
+                            $controllerObj->$method($matches[0], $matches[1]);
+                            break;
+                        default:
+                            abort(500, "Invalid number of parameters in route: $pattern");
+                    }
                 }
                 return;
             }
@@ -70,6 +88,9 @@ class Router
         // handle 404
         abort(404, "Route `$method $path` Not Found");
     }
+
+
+
 
 
 
