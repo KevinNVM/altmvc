@@ -35,3 +35,16 @@ switch (strtolower($choice)) {
         echo "Invalid option. Please choose again.\n";
         break;
 }
+
+// Perform the selected action
+switch (strtolower($choice)) {
+    case 'serve':
+        $port = 8000;
+        $host = 'localhost';
+        echo "Starting the app on http://$host:$port\n";
+        exec("php -S $host:$port -t public ");
+        break;
+    default:
+        echo "Invalid option. Please choose again.\n";
+        break;
+}
