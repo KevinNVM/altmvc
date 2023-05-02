@@ -20,21 +20,4 @@ class HomeController
             'message' => 'Welcome to AltMVC Version ' . $_ENV['VERSION']
         ]);
     }
-
-    function post()
-    {
-        return Response::json('this is post request');
-    }
-    function put()
-    {
-        return Response::json('this is put request');
-    }
-    function patch()
-    {
-        return Response::json('this is patch request');
-    }
-    function delete()
-    {
-        return Response::json('this is delete request');
-    }
 }
