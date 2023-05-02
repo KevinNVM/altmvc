@@ -55,32 +55,30 @@ class Router
                 $numParams = substr_count($pattern, '{');
 
                 // Call handler with parameter values as arguments
+                // Call handler with parameter values as arguments
                 if (is_callable($handler)) {
                     switch ($numParams) {
-                        case 1:
-                            $handler($matches[0]);
-                            break;
-                        case 2:
-                            $handler($matches[0], $matches[1]);
+                        case 0:
+                            $handler();
                             break;
                         default:
-                            abort(500, "Invalid number of parameters in route: $pattern");
+                            $handler(...$matches);
+                            break;
                     }
                 } else {
                     $controller = $handler[0];
                     $method = $handler[1];
                     $controllerObj = new $controller();
                     switch ($numParams) {
-                        case 1:
-                            $controllerObj->$method($matches[0]);
-                            break;
-                        case 2:
-                            $controllerObj->$method($matches[0], $matches[1]);
+                        case 0:
+                            $controllerObj->$method();
                             break;
                         default:
-                            abort(500, "Invalid number of parameters in route: $pattern");
+                            $handler(...$matches);
+                            break;
                     }
                 }
+
                 return;
             }
         }

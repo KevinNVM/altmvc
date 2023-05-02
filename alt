@@ -8,6 +8,7 @@ if (php_sapi_name() !== 'cli') {
 // Define the options
 $options = [
     'serve' => 'Serve the app',
+    'env:copy' => 'Copy .env.example to .env file'
 ];
 
 // Get the user's choice from the command line arguments
@@ -43,6 +44,11 @@ switch (strtolower($choice)) {
         $host = 'localhost';
         echo "Starting the app on http://$host:$port\n";
         exec("php -S $host:$port -t public ");
+        break;
+
+    case 'env:copy':
+        echo "Copying env files...";
+        exec("cp ./.env.example ./.env");
         break;
     default:
         echo "Invalid option. Please choose again.\n";

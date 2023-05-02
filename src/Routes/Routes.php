@@ -17,3 +17,11 @@ $router->get('/users/{id}', function ($id) {
 $router->get('/users/{name}/{id}', function ($name, $id) {
     dd($name, $id);
 });
+
+$router->get('/users/{name}/{id}/{email}', function ($name, $id, $email) {
+    dd($name, $id, $email);
+});
+
+$router->get('/users/{name}/{id}/{email}/{asdasd}', function (...$param) {
+    dd(...$param);
+});
