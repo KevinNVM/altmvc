@@ -1,4 +1,4 @@
+.env
+composer.lock
 node_modules
-vendor
-.envnode_modules
 vendor
