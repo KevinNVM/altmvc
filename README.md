@@ -1,6 +1,6 @@
 # AltMVC Framework Documentation
 
-> Some of the functions may change or removed on V2, See [https://github.com/KevinNVM/altmvc/compare/v1.0.0...main](changelog) for details.
+> Some of the functions may change or removed on V2, See [changelog](https://github.com/KevinNVM/altmvc/compare/v1.0.0...main) for details.
 
 ## Todo :
 
