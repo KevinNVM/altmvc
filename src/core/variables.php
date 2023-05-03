@@ -1,9 +1,11 @@
 <?php
 
-define('VIEWS_PATH', '../src/views/');
+define('VIEWS_PATH', '../src/Views/');
+define('VIEWS_LAYOUT_PATH', '../src/Views/layouts');
+define('DEFAULT_LAYOUT_PATH', concat(VIEWS_LAYOUT_PATH, '/main/app.php'));
 
 define('HTTP_ERROR_MESSAGES',  array(
-    200 => 'Ok',
+    200 => 'OK',
     400 => 'Bad Request',
     401 => 'Unauthorized',
     403 => 'Forbidden',

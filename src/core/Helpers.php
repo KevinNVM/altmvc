@@ -73,3 +73,8 @@ if (!function_exists('abort')) {
         die;
     }
 }
+
+function concat(string ...$strings): string
+{
+    return implode('', $strings);
+}

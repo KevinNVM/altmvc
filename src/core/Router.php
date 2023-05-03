@@ -11,32 +11,40 @@ class Router
         'DELETE' => [],
     ];
 
-    public function get(string $path, array|callable $handler)
+    public function get(string $path, array|callable $handler): self
     {
         $path = trim($path, '/');
         $this->routes['GET'][$path] = $handler;
+        return $this;
     }
 
-    public function post(string $path, array|callable $handler)
+    public function post(string $path, array|callable $handler): self
     {
         $path = trim($path, '/');
         $this->routes['POST'][$path] = $handler;
+        return $this;
     }
 
-    public function put(string $path, array|callable $handler)
+    public function put(string $path, array|callable $handler): self
     {
         $path = trim($path, '/');
         $this->routes['PUT'][$path] = $handler;
+        return $this;
     }
 
-    public function delete(string $path, array|callable $handler)
+    public function delete(string $path, array|callable $handler): self
     {
         $path = trim($path, '/');
         $this->routes['DELETE'][$path] = $handler;
+        return $this;
     }
 
-    public function useRouter($path, $method)
+    public function useRouter(string $path, string  $method): void
     {
+        if (!in_array(strtoupper($method), ['GET', 'POST', 'PUT', 'DELETE']) && empty($path)) {
+            throw new \Exception('Invalid Parameters!');
+        }
+
         // Get requested route from URL
         $route = preg_replace('/\?.*/', '', $path); // Strip query string from URL
         $route = trim($route, '/'); // Strip trailing slashes from URL
@@ -87,12 +95,7 @@ class Router
         abort(404, "Route `$method $path` Not Found");
     }
 
-
-
-
-
-
-    public function getRoutes()
+    public function getRoutes(): array
     {
         return $this->routes;
     }

@@ -8,7 +8,9 @@ class HomeController
 {
     function index()
     {
-        echo 'hello world';
+        return Response::view('index.php', [
+            'frameworkVersion' => $_ENV['VERSION']
+        ])->send();
     }
 
     public function api()

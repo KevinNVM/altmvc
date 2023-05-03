@@ -16,8 +16,8 @@ class App
         $this->loadEnvVariables();
 
         require_once dirname(__DIR__) . '/Core/Errors/handler.php';
-        require_once dirname(__DIR__) . '/Core/Variables.php';
         require_once dirname(__DIR__) . '/Core/Helpers.php';
+        require_once dirname(__DIR__) . '/Core/Variables.php';
 
         $this->detectPublicOnUrlString();
 
