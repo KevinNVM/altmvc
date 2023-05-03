@@ -9,8 +9,8 @@ class HomeController
     function index()
     {
         return Response::view('index.php', [
-            'frameworkVersion' => $_ENV['VERSION']
-        ])->send();
+            'frameworkVersion' => $_ENV["VERSION"]
+        ]);
     }
 
     public function api()

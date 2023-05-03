@@ -4,9 +4,6 @@ namespace App\Core\Http;
 
 class Response
 {
-    protected $view;
-    protected $data;
-    protected $layout;
     protected $content;
     protected $status;
     protected $headers;
@@ -30,13 +27,6 @@ class Response
         return new static($content, $status, $headers);
     }
 
-    public function layout($layout)
-    {
-        $this->layout = $layout;
-        $this->content = static::renderLayout($layout, $this->content);
-        return $this;
-    }
-
     public function status($status)
     {
         $this->status = $status;
@@ -58,8 +48,6 @@ class Response
         http_response_code($this->status);
 
         echo $this->content;
-
-        return $this;
     }
 
     public function __toString()
@@ -79,18 +67,5 @@ class Response
         $content = ob_get_clean();
 
         return $content;
-    }
-
-    protected static function renderLayout($layout, $content)
-    {
-        $layoutFile = concat(VIEWS_LAYOUT_PATH, $layout);
-        if (!file_exists($layoutFile)) {
-            throw new \Exception("Layout file not found: {$layoutFile}");
-        }
-        ob_start();
-        require $layoutFile;
-        $result = ob_get_clean();
-
-        return $result;
     }
 }
