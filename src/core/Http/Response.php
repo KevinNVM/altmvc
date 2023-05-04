@@ -2,6 +2,8 @@
 
 namespace App\Core\Http;
 
+use App\Core\Response\View;
+
 class Response
 {
     protected $content;
@@ -15,9 +17,9 @@ class Response
         $this->headers = $headers;
     }
 
-    public static function view($view, $data = [])
+    public static function view(string $view, ?array $params = [], string $withLayout = ''): View
     {
-        return new static(static::renderView($view, $data));
+        return View::make($view, $params)->withLayout($withLayout);
     }
 
     public static function json($data, $status = 200, $headers = [])
@@ -25,18 +27,6 @@ class Response
         $content = json_encode($data);
         $headers['Content-Type'] = 'application/json';
         return new static($content, $status, $headers);
-    }
-
-    public function status($status)
-    {
-        $this->status = $status;
-        return $this;
-    }
-
-    public function header($name, $value)
-    {
-        $this->headers[$name] = $value;
-        return $this;
     }
 
     public function send()
@@ -53,19 +43,5 @@ class Response
     public function __toString()
     {
         return $this->content;
-    }
-
-    protected static function renderView($view, $data = [])
-    {
-        $viewFile = concat(VIEWS_PATH, $view);
-        if (!file_exists($viewFile)) {
-            throw new \Exception("View file not found: {$viewFile}");
-        }
-        extract($data);
-        ob_start();
-        require $viewFile;
-        $content = ob_get_clean();
-
-        return $content;
     }
 }

@@ -41,6 +41,7 @@ class Router
 
     public function useRouter(string $path, string  $method): void
     {
+
         if (!in_array(strtoupper($method), ['GET', 'POST', 'PUT', 'DELETE']) && empty($path)) {
             throw new \Exception('Invalid Parameters!');
         }
@@ -59,42 +60,50 @@ class Router
                 // Remove first element of $matches array, which contains the entire match
                 array_shift($matches);
 
-                // Determine number of parameters in the route
-                $numParams = substr_count($pattern, '{');
+                // Call handler with parameter values as arguments
 
-                // Call handler with parameter values as arguments
-                // Call handler with parameter values as arguments
+
+
+
                 if (is_callable($handler)) {
-                    switch ($numParams) {
-                        case 0:
-                            $handler();
-                            break;
-                        default:
-                            $handler(...$matches);
-                            break;
+                    $output = $handler(...$matches);
+                    if (is_array($output)) {
+                        header("Content-Type: application/json");
+                        echo json_encode($output);
+                    } else {
+                        header("Content-Type: text/html");
+                        echo $output;
                     }
                 } else {
                     $controller = $handler[0];
                     $method = $handler[1];
                     $controllerObj = new $controller();
-                    switch ($numParams) {
-                        case 0:
-                            $controllerObj->$method();
-                            break;
-                        default:
-                            $handler(...$matches);
-                            break;
+
+                    // Call the method on the object after creating the instance
+                    $output = $controllerObj->$method();
+                    if (is_array($output)) {
+                        header("Content-Type: application/json");
+                        echo json_encode($output);
+                    } else {
+                        header("Content-Type: text/html");
+                        echo $output;
                     }
                 }
+
 
                 return;
             }
         }
 
-        // handle 404
+        // handle 404 ROutes
         abort(404, "Route `$method $path` Not Found");
     }
 
+    /**
+     * Get all of the routes
+     * 
+     * @return array
+     */
     public function getRoutes(): array
     {
         return $this->routes;

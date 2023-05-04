@@ -3,21 +3,21 @@
 namespace App\Controllers;
 
 use App\Core\Http\Response;
+use App\Core\Response\View;
 
 class HomeController
 {
-    function index()
+    function index(): View
     {
-        return Response::view('index.php', [
-            'frameworkVersion' => $_ENV["VERSION"]
-        ]);
-    }
+        # Rendering view using `App\Core\Http\Response::class`
+        return
+            Response::view(
+                view: 'index',
+                withLayout: 'main/app'
+            );
 
-    public function api()
-    {
-        return Response::json([
-            'status' => 200,
-            'message' => 'Welcome to AltMVC Version ' . $_ENV['VERSION']
-        ]);
+        # Rendering view using `App\Core\Response\View::class`
+        return
+            View::make('index')->withLayout('main/app');
     }
 }
