@@ -125,6 +125,8 @@ Application's CLI
 
 ## Command Line Utilities
 
+> CLI Commands is not fully implemented yet, for available commands please look in [cli's file](https://github.com/KevinNVM/altmvc/blob/main/alt)
+
 The AltMVC framework provides a set of command line utilities to help developers perform common tasks such as serving the application, migrating the database, and seeding the database. These utilities can be found in the `src/commands` directory. The following is a list of available commands:
 
 - `php alt serve`: Starts the application on the default port of 8000.
