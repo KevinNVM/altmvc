@@ -26,29 +26,15 @@ if (isset($argv[1]) && array_key_exists($argv[1], $options)) {
 
 // Perform the selected action
 switch (strtolower($choice)) {
-    case 'serve':
-        $port = 8000;
-        $host = 'localhost';
-        echo "Starting the app on http://$host:$port\n";
-        exec("php -S $host:$port -t public ");
-        break;
-    default:
-        echo "Invalid option. Please choose again.\n";
-        break;
-}
-
-// Perform the selected action
-switch (strtolower($choice)) {
-    case 'serve':
-        $port = 8000;
-        $host = 'localhost';
-        echo "Starting the app on http://$host:$port\n";
-        exec("php -S $host:$port -t public ");
-        break;
-
     case 'env:copy':
         echo "Copying env files...";
         exec("cp ./.env.example ./.env");
+        break;
+    case 'serve':
+        $port = 8000;
+        $host = 'localhost';
+        echo "Starting the app on http://$host:$port\n";
+        exec("php -S $host:$port -t public ");
         break;
     default:
         echo "Invalid option. Please choose again.\n";

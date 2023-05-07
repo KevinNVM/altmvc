@@ -12,12 +12,21 @@ class View
         protected string $view,
         protected ?array $params = [],
         protected string $layout = '',
+        protected string $title = ''
     ) {
+        $this->title = empty($this->title) ?
+            (string) $_ENV["APP_NAME"] :
+            $this->title;
     }
 
-    public static function make(string $view, ?array $params = []): static
+    public static function make(string $view, ?array $params = [], string $title = ''): static
     {
-        return new static($view, $params);
+        return new static($view, $params, $title);
+    }
+
+    public function title(string $title)
+    {
+        return new static($this->view, $this->params, $this->layout, $title);
     }
 
     public function render(): string
@@ -38,8 +47,18 @@ class View
         $viewString = $this->getView($viewPath);
 
         $output = !empty($this->layout) ?
-            str_replace('%%BODY%%', $viewString, $layoutString) :
+            str_replace(
+                search: [
+                    '%%BODY%%', '%%TITLE%%'
+                ],
+                replace: [
+                    $viewString,
+                    $this->title
+                ],
+                subject: $layoutString
+            ) :
             $viewString;
+
 
         return (string) $output;
     }
@@ -59,6 +78,10 @@ class View
 
     private function getView(string $viewPath): string
     {
+        // Extract variables from $this->params
+        extract(
+            $this->params
+        );
         ob_start();
         include $viewPath;
         return (string) ob_get_clean();

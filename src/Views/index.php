@@ -11,7 +11,7 @@
 <body>
     <h1>
         Welcome to AltMVC Version <code style="font-size: 0.7em;">
-      <?= $frameworkVersion ?></code>
+            <?= $frameworkVersion ?? 'null' ?></code>
     </h1>
 </body>
 
