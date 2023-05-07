@@ -34,20 +34,94 @@ In addition, AltMVC also provides a set of utilities that help developers manage
 
 ## Directory Structure
 
-The following is the directory structure of AltMVC:
+The following is the directory structure for this project:
 
-*   `public/` : This folder contains all the files that are publicly accessible to the user via the webserver.
-    *   `.htaccess`: This file is used to configure Apache web server settings for the application.
-    *   `index.php`: This file is the entry point for the application and is responsible for handling all incoming HTTP requests.
-*   `src/` : This folder contains all the source code files for the application.
-    *   `commands/`: This folder contains PHP files that define CLI commands for the application.
-    *   `controllers/`: This folder contains PHP files that define controllers for the application.
-    *   `core/`: This folder contains core PHP files for the application.
-    *   `database/`: This folder contains PHP files that define the database-related functionality for the application.
-    *   `errors/`: This folder contains PHP files that define custom error pages for the application.
-    *   `views/`: This folder contains PHP files that define the HTML templates for the application.
-    *   `routes.php`: This file defines the URL routes for the application.
-*   `alt`: This file is the CLI entry point for the application and is responsible for handling all incoming CLI requests.
+*   .vscode/
+*   public/
+    *   .htaccess
+    *   index.php
+*   src/
+    *   App/
+        *   bootstrap.php
+    *   Controllers/
+        *   HomeController.php
+    *   core/
+        *   Commands/
+        *   Errors/
+            *   Exceptions/
+                *   LayoutNotFoundException.php
+                *   ViewNotFoundException.php
+            *   handler.php
+            *   views.php
+        *   Http/
+            *   Response.php
+        *   Models/
+        *   Response/
+            *   View.php
+        *   Router.php
+        *   variables.php
+    *   Routes/
+        *   Routes.php
+    *   Views/
+        *   layouts/
+            *   main/
+                *   app.php
+        *   index.php
+*   .env
+*   .env.example
+*   alt
+
+## Directory Description
+### .vscode/
+Contains settings and configurations for Visual Studio Code.
+### public/
+Contains files that are directly accessible to the public.
+*   .htaccess: Configures Apache web server settings.
+*   index.php: Entry point for the application.
+### src/
+Contains the main source code for the application.
+#### App/
+Contains files related to the application itself.
+*   bootstrap.php: Initializes the application.
+#### Controllers/
+Contains files that handle incoming requests and return responses.
+*   HomeController.php: Example controller.
+#### core/
+Contains files that provide the core functionality for the application.
+##### Commands/
+Contains files that define command line commands.
+##### Errors/
+Contains files that handle errors and exceptions.
+*   Exceptions/: Contains custom exception classes.
+*   handler.php: Error handler function.
+*   views.php: Views for error pages.
+##### Http/
+Contains files related to HTTP requests and responses.
+*   Response.php: HTTP response class.
+##### Models/
+Contains files related to the application's data models.
+##### Response/
+Contains files related to HTTP responses.
+*   View.php: HTTP response view class.
+##### Router.php
+Class that handles routing of requests.
+##### variables.php
+Contains global variables used throughout the application.
+#### Routes/
+Contains files that define the application's routes.
+*   Routes.php: Example routes file.
+#### Views/
+Contains files related to the application's views.
+*   layouts/: Contains view layouts.
+    *   main/: Example main layout.
+        *   app.php: Example app view.
+*   index.php: Example index view.
+### .env
+Environment file containing application-specific settings.
+### .env.example
+Example environment file.
+### alt
+Application's CLI
 
 ## Command Line Utilities
 
