@@ -4,6 +4,8 @@
 
 > Some of the functions may change or removed on V2, See [changelog](https://github.com/KevinNVM/altmvc/compare/v1.0.0...main) for details.
 
+> Looking for older PHP version ? [AltMVC Legacy](https://github.com/kevinnvm/altmvc-legacy)
+
 ## Todo :
 
 Certain things that i will be doing in the future(hopefully)
